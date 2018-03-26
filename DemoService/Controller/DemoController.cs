@@ -15,14 +15,14 @@ namespace DemoService.Controller
         [Route(1)]
         public Task First(AppSession appSession, PacketInfo packetInfo)
         {
-            Console.WriteLine($"1 번 라우트, Body: {Encoding.Default.GetString(packetInfo.Body)}");
+            Console.WriteLine($"1 번 라우트 ResultCode {packetInfo.ResultCode}, Body: {Encoding.Default.GetString(packetInfo.Body)}");
             return Task.FromResult(true);
         }
 
         [Route(2)]
         public Task Second(AppSession appSession, PacketInfo packetInfo)
         {
-            Console.WriteLine($"2 번 라우트, Body: {Encoding.Default.GetString(packetInfo.Body)}");
+            Console.WriteLine($"2 번 라우트 ResultCode {packetInfo.ResultCode}, Body: {Encoding.Default.GetString(packetInfo.Body)}");
             return Task.FromResult(true);
         }
     }

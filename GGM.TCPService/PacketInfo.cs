@@ -4,11 +4,13 @@ namespace GGM.TCPService
 {
     public abstract class PacketInfo : BinaryRequestInfo
     {
-        protected PacketInfo(int router, byte[] body) : base(null, body)
+        protected PacketInfo(uint router, uint resultCode, byte[] body) : base(null, body)
         {
             Route = router;
+            ResultCode = resultCode;
         }
 
-        public int Route { get; }
+        public uint Route { get; }
+        public uint ResultCode { get; }
     }
 }

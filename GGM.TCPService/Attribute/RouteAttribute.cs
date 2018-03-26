@@ -5,11 +5,11 @@ namespace GGM.TCPService.Attribute
     [AttributeUsage(AttributeTargets.Method)]
     public class RouteAttribute : System.Attribute
     {
-        public RouteAttribute(int route)
+        public RouteAttribute(uint route)
         {
             Route = route;
         }
 
-        public int Route { get; }
+        public uint Route { get; }
     }
 }

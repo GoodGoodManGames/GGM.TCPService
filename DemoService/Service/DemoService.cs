@@ -40,14 +40,14 @@ namespace DemoService.Service
 
     public class TestPacketInfo : PacketInfo
     {
-        public TestPacketInfo(int router, byte[] body) : base(router, body)
+        public TestPacketInfo(uint router, uint resultCode, byte[] body) : base(router, resultCode, body)
         {
         }
     }
 
     public class ReceiveFilter : FixedHeaderReceiveFilter<TestPacketInfo>
     {
-        public ReceiveFilter() : base(8)
+        public ReceiveFilter() : base(12)
         {
         }
 
@@ -59,8 +59,9 @@ namespace DemoService.Service
         protected override TestPacketInfo ResolveRequestInfo(ArraySegment<byte> header, byte[] bodyBuffer, int offset, int length)
         {
             return new TestPacketInfo(
-                BitConverter.ToInt32(header.Array, 4)
-                , bodyBuffer.CloneRange(offset, length)
+                BitConverter.ToUInt32(header.Array, 4)
+              , BitConverter.ToUInt32(header.Array, 8)
+              , bodyBuffer.CloneRange(offset, length)
             );
         }
     }

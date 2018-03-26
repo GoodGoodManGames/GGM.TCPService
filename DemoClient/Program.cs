@@ -22,6 +22,7 @@ namespace DemoClient
             List<byte> bytes = new List<byte>();
             bytes.AddRange(BitConverter.GetBytes(body.Length)); // Body Length
             bytes.AddRange(BitConverter.GetBytes(2)); // Route
+            bytes.AddRange(BitConverter.GetBytes(1)); // ResultCode
             bytes.AddRange(body); // Body
 
             client.Write(bytes.ToArray());

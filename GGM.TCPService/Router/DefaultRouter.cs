@@ -10,8 +10,7 @@ namespace GGM.TCPService.Router
 
     internal class DefaultRouter : IRouter
     {
-        private readonly Dictionary<int, Func<AppSession, PacketInfo, Task>> _routeMap =
-            new Dictionary<int, Func<AppSession, PacketInfo, Task>>();
+        private readonly Dictionary<uint, Func<AppSession, PacketInfo, Task>> _routeMap = new Dictionary<uint, Func<AppSession, PacketInfo, Task>>();
 
         public void RegisterController(object controller)
         {
