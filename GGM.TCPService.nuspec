@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>GGM.TCPService</id>
+    <version>1.0.0</version>
+    <authors>goodgoodman</authors>
+    <owners>goodgoodman</owners>
+    <licenseUrl>https://github.com/GoodGoodManGames/GGM.Context/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/GoodGoodManGames/GGM.TCPService</projectUrl>
+    <iconUrl>https://avatars1.githubusercontent.com/u/32609950?s=200&amp;v=4</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>GoodGoodManGames에서 사용하는 TCP 라이브러리입니다.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2018</copyright>
+    <tags>GGM</tags>
+    <dependencies>
+      <dependency id="GGM.Application" version="1.6.3" />
+      <dependency id="SuperSocket" version="1.6.6.1" />
+    </dependencies>
+  </metadata>
+</package>
