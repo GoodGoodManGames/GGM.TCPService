@@ -42,6 +42,7 @@ namespace DemoService.Service
     {
         public TestPacketInfo(uint router, uint resultCode, byte[] body) : base(router, resultCode, body)
         {
+
         }
     }
 

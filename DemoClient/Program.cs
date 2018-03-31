@@ -27,6 +27,10 @@ namespace DemoClient
 
             client.Write(bytes.ToArray());
 
+            var byteMessage = client.Read();
+            var message = Encoding.Default.GetString(byteMessage.Item2);
+            Console.WriteLine(message);
+
             client.Close();
         }
     }
