@@ -3,9 +3,11 @@ using SuperSocket.SocketBase;
 
 namespace GGM.TCPService.Router
 {
-    public interface IRouter
+    public interface IRouter<TSession, TPacketInfo> 
+                where TPacketInfo : PacketInfo 
+                where TSession : AppSession<TSession, TPacketInfo>, new()
     {
         void RegisterController(object controller);
-        Task Route(PacketInfo packetInfo, AppSession appSession);
+        Task Route(TPacketInfo packetInfo, AppSession<TSession, TPacketInfo> appSession);
     }
 }

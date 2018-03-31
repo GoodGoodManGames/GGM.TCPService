@@ -16,7 +16,7 @@ namespace GGM.TCPService
     {
         private readonly IReceiveFilterFactory<TPacketInfo> _receiveFilterFactory;
 
-        private readonly IRouter _router = new DefaultRouter();
+        private readonly IRouter<TSession, TPacketInfo> _router = new DefaultRouter<TSession, TPacketInfo>();
         private IAppServer<TSession, TPacketInfo> _server;
 
         public TCPService(IReceiveFilterFactory<TPacketInfo> receiveFilterFactory, params object[] controllers)
@@ -86,7 +86,7 @@ namespace GGM.TCPService
         // Warring : 비동기 메소드를 void 반환형으로 사용하는 것은 바람직 하지 못하나, 여기선 이렇게 씀.
         private async void OnReceived(TSession session, TPacketInfo packetInfo)
         {
-            await _router.Route(packetInfo, session as AppSession);
+            await _router.Route(packetInfo, session as AppSession<TSession, TPacketInfo>);
         }
 
         private class TCPServer : AppServer<TSession, TPacketInfo>

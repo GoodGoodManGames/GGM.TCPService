@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Threading.Tasks;
+using DemoService.Service;
 using GGM.Context;
 using GGM.Context.Attribute;
 using GGM.TCPService;
@@ -13,16 +14,18 @@ namespace DemoService.Controller
     public class DemoController
     {
         [Route(1)]
-        public Task First(AppSession appSession, PacketInfo packetInfo)
+        public Task First(AppSession<TestSession, TestPacketInfo> appSession, PacketInfo packetInfo)
         {
             Console.WriteLine($"1 번 라우트 ResultCode {packetInfo.ResultCode}, Body: {Encoding.Default.GetString(packetInfo.Body)}");
             return Task.FromResult(true);
         }
 
         [Route(2)]
-        public Task Second(AppSession appSession, PacketInfo packetInfo)
+        public Task Second(AppSession<TestSession, TestPacketInfo> appSession, PacketInfo packetInfo)
         {
-            Console.WriteLine($"2 번 라우트 ResultCode {packetInfo.ResultCode}, Body: {Encoding.Default.GetString(packetInfo.Body)}");
+            Console.WriteLine($"2 번 라우트 ResultCode {packetInfo.ResultCode}, Body: {Encoding.Default.GetString(packetInfo.Body)},");
+            var a = Encoding.Default.GetBytes("Message");
+            appSession.Send(a, 0, a.Length);
             return Task.FromResult(true);
         }
     }
