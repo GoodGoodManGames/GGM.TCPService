@@ -25,9 +25,8 @@ namespace GGM.TCPService.Router
             {   
                 var routeAttribute = methodInfo.GetCustomAttribute<RouteAttribute>();
                 if (routeAttribute == null)
-                    return;
-                _routeMap[routeAttribute.Route] =
-                    Delegate.CreateDelegate(typeof(Func<AppSession<TSession, TPacketInfo>, PacketInfo, Task>), controller, methodInfo.Name) as Func<AppSession<TSession, TPacketInfo>, PacketInfo, Task>;
+                    continue;
+                _routeMap[routeAttribute.Route] = Delegate.CreateDelegate(typeof(Func<AppSession<TSession, TPacketInfo>, PacketInfo, Task>), controller, methodInfo.Name) as Func<AppSession<TSession, TPacketInfo>, PacketInfo, Task>;
             }
         }
         public Task Route(TPacketInfo packetInfo, AppSession<TSession, TPacketInfo> appSession)
